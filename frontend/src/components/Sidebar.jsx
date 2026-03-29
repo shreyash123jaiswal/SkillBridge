@@ -24,20 +24,20 @@ export default function Sidebar({ active, setActive }) {
         >
             {/* 🔹 TOP SECTION */}
             <div className="flex items-center justify-between p-4 border-b border-white/20">
-                {!collapsed && (
-                    <button
-                        onClick={() => setActive("profile")} // sets Hero section
-                        className="text-xl font-bold tracking-wide hover:text-gray-200 transition"
-                    >
-                        Dashboard
-                    </button>
-                )}
+  {!collapsed && (
+    <button
+      onClick={() => setActive("hero")} // <-- set to "hero" to render Hero.jsx
+      className="text-xl font-bold tracking-wide hover:text-gray-200 transition"
+    >
+      Dashboard
+    </button>
+  )}
 
-                <FaBars
-                    className="cursor-pointer"
-                    onClick={() => setCollapsed(!collapsed)}
-                />
-            </div>
+  <FaBars
+    className="cursor-pointer"
+    onClick={() => setCollapsed(!collapsed)}
+  />
+</div>
 
             {/* 🔹 PROFILE CARD */}
             <div className="flex flex-col items-center py-6 border-b border-white/20">
