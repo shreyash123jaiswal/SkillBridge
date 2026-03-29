@@ -109,3 +109,65 @@ async def recommend_courses(missing_skills: List[str]):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
+from pydantic import BaseModel
+
+class AnalyzeRequest(BaseModel):
+    filePath: str
+
+@app.post("/analyze")
+async def analyze_resume(data: AnalyzeRequest):
+    try:
+        # Step 1: parse resume
+        import os
+
+        file_path = os.path.abspath(data.filePath)
+        text = ResumeParser.parse_resume(file_path)
+
+        # Step 2: extract skills
+        skills = extractor.extract_skills(text)
+
+        # Step 3: recommend jobs
+        recommendations = recommender.recommend_jobs(skills)
+
+        return {
+            "skills": skills,
+            "recommended_roles": recommendations
+        }
+
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    
+class CareerPivotRequest(BaseModel):
+    currentSkills: List[str]
+    targetRole: str
+
+@app.post("/career-pivot")
+async def career_pivot(data: CareerPivotRequest):
+    try:
+        result = await analyze_skill_gap(SkillGapRequest(
+            user_skills=data.currentSkills,
+            target_role=data.targetRole
+        ))
+
+        return {
+            "missingSkills": result["missing_skills"],
+            "readinessScore": result["match_percentage"],
+            "difficulty": "Medium"
+        }
+
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+class ChatRequest(BaseModel):
+    message: str
+
+@app.post("/chat")
+async def chat(data: ChatRequest):
+    return {
+        "reply": f"You asked: {data.message}"
+    }
+
+@app.get("/")
+def root():
+    return {"status": "AI running"}        
