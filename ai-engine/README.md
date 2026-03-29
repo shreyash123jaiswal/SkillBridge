@@ -41,6 +41,12 @@ This directory contains the AI and NLP logic for SkillBridge.
    uvicorn app:app --reload
    ```
 
+## Running Tests
+To ensure the AI components are working correctly, run the unit tests:
+```bash
+pytest tests/
+```
+
 ## Endpoints
 - `POST /extract-skills-from-text/`: Extract skills from raw text.
 - `POST /parse-resume/`: Upload PDF/DOCX to extract skills.

@@ -1,0 +1,14 @@
+Snehil Sahay
+Full Stack Developer
+
+Summary:
+Highly motivated developer with experience in React, Node.js, and Python.
+
+Skills:
+- JavaScript, React, HTML, CSS, Git
+- Node.js, Express, MongoDB, REST API
+- Python, SQL
+
+Projects:
+SkillBridge - AI-powered career platform using FastAPI and spaCy.
+Portfolio - Personal website built with Next.js and Tailwind CSS.

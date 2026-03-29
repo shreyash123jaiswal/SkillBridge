@@ -1,77 +1,16 @@
 {
-  "frontend developer": [
-    { "name": "HTML", "weight": 1 },
-    { "name": "CSS", "weight": 1 },
-    { "name": "JavaScript", "weight": 3 },
-    { "name": "React", "weight": 4 },
-    { "name": "Git", "weight": 1 },
-    { "name": "Responsive Design", "weight": 2 }
-  ],
-
-  "backend developer": [
-    { "name": "Node.js", "weight": 3 },
-    { "name": "Express", "weight": 3 },
-    { "name": "MongoDB", "weight": 2 },
-    { "name": "SQL", "weight": 2 },
-    { "name": "REST API", "weight": 4 },
-    { "name": "JWT", "weight": 2 },
-    { "name": "Git", "weight": 1 }
-  ],
-
-  "full stack developer": [
-    { "name": "HTML", "weight": 1 },
-    { "name": "CSS", "weight": 1 },
-    { "name": "JavaScript", "weight": 3 },
-    { "name": "React", "weight": 3 },
-    { "name": "Node.js", "weight": 3 },
-    { "name": "Express", "weight": 2 },
-    { "name": "MongoDB", "weight": 2 },
-    { "name": "REST API", "weight": 3 },
-    { "name": "Git", "weight": 1 }
-  ],
-
-  "data analyst": [
-    { "name": "Python", "weight": 3 },
-    { "name": "SQL", "weight": 4 },
-    { "name": "Excel", "weight": 2 },
-    { "name": "Pandas", "weight": 3 },
-    { "name": "Data Visualization", "weight": 3 },
-    { "name": "Statistics", "weight": 2 }
-  ],
-
+  "frontend developer": ["HTML", "CSS", "JavaScript", "React", "Git", "TypeScript", "Tailwind"],
+  "backend developer": ["Node.js", "Express", "MongoDB", "REST API", "JWT", "SQL", "Docker"],
+  "data analyst": ["Python", "SQL", "Excel", "Pandas", "Data Visualization", "Tableau", "PowerBI"],
   "machine learning engineer": [
-    { "name": "Python", "weight": 4 },
-    { "name": "Machine Learning", "weight": 4 },
-    { "name": "Scikit-learn", "weight": 3 },
-    { "name": "TensorFlow", "weight": 3 },
-    { "name": "Deep Learning", "weight": 3 },
-    { "name": "Data Preprocessing", "weight": 2 }
+    "Python",
+    "Machine Learning",
+    "Scikit-learn",
+    "TensorFlow",
+    "Data Preprocessing",
+    "PyTorch",
+    "Deep Learning"
   ],
-
-  "android developer": [
-    { "name": "Java", "weight": 3 },
-    { "name": "Kotlin", "weight": 4 },
-    { "name": "Android SDK", "weight": 4 },
-    { "name": "Firebase", "weight": 2 },
-    { "name": "REST API", "weight": 2 },
-    { "name": "Git", "weight": 1 }
-  ],
-
-  "devops engineer": [
-    { "name": "Linux", "weight": 3 },
-    { "name": "Docker", "weight": 4 },
-    { "name": "Kubernetes", "weight": 4 },
-    { "name": "CI/CD", "weight": 3 },
-    { "name": "AWS", "weight": 4 },
-    { "name": "Shell Scripting", "weight": 2 }
-  ],
-
-  "cybersecurity analyst": [
-    { "name": "Networking", "weight": 3 },
-    { "name": "Linux", "weight": 3 },
-    { "name": "Cybersecurity Fundamentals", "weight": 4 },
-    { "name": "Ethical Hacking", "weight": 4 },
-    { "name": "Cryptography", "weight": 2 },
-    { "name": "SIEM Tools", "weight": 2 }
-  ]
+  "devops engineer": ["AWS", "Docker", "Kubernetes", "Jenkins", "Terraform", "Linux", "CI/CD"],
+  "full stack developer": ["HTML", "CSS", "JavaScript", "React", "Node.js", "Express", "SQL", "Git"]
 }
