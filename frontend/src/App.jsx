@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Landing from "./pages/Landing";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
+import Roadmap from "./components/Roadmap";
 
 // 🔐 Fake auth check (replace later with real auth)
 const isAuthenticated = () => {

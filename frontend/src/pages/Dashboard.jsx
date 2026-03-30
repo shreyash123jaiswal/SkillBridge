@@ -5,6 +5,7 @@ import Hero from "../components/Hero";
 import Profile from "../components/Profile";
 import ResumeAnalyzer from "../components/ResumeAnalyzer";
 import CompanyDetails from "../components/CompanyDetails";
+import Roadmap from "../components/Roadmap";
 
 export default function Dashboard() {
   const [activeSection, setActiveSection] = useState("hero"); // default
@@ -29,6 +30,7 @@ export default function Dashboard() {
         <div className="flex-1 overflow-auto p-6">
           {activeSection === "profile" && <Profile />}
           {activeSection === "resume" && <ResumeAnalyzer />}
+          {activeSection === "roadmap" && <Roadmap />}
           {activeSection === "hero" && (
             <Hero 
               activeSection={activeSection} 
