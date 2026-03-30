@@ -168,6 +168,10 @@ async def chat(data: ChatRequest):
         "reply": f"You asked: {data.message}"
     }
 
+@app.get("/health")
+def health():
+    return {"status": "healthy"}
+
 @app.get("/")
 def root():
     return {"status": "AI running"}        

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaRobot, FaTimes, FaPaperPlane } from "react-icons/fa";
+import { api } from "../api";
 
 export default function Chatbot() {
   const [open, setOpen] = useState(false);
@@ -7,30 +8,27 @@ export default function Chatbot() {
   const [messages, setMessages] = useState([
     { sender: "bot", text: "Hi 👋 I'm your AI assistant. How can I help you?" }
   ]);
+  const [loading, setLoading] = useState(false);
 
-  // 🤖 Dummy AI response (replace with real API later)
-  const getBotResponse = (userText) => {
-    const text = userText.toLowerCase();
-
-    if (text.includes("job")) return "You can check trending jobs in your dashboard 🔥";
-    if (text.includes("resume")) return "Upload your resume to analyze your strength 📄";
-    if (text.includes("course")) return "Explore courses in the sidebar 📚";
-
-    return "I'm here to help! Try asking about jobs, resume, or courses 😊";
-  };
-
-  const handleSend = () => {
-    if (!input.trim()) return;
+  const handleSend = async () => {
+    if (!input.trim() || loading) return;
 
     const userMessage = { sender: "user", text: input };
-
-    const botMessage = {
-      sender: "bot",
-      text: getBotResponse(input),
-    };
-
-    setMessages((prev) => [...prev, userMessage, botMessage]);
+    setMessages((prev) => [...prev, userMessage]);
     setInput("");
+    setLoading(true);
+
+    try {
+      const response = await api.chat(input, messages.filter(m => m.sender === 'user').map(m => ({ role: 'user', content: m.text })));
+      const botMessage = { sender: "bot", text: response.reply };
+      setMessages((prev) => [...prev, botMessage]);
+    } catch (error) {
+      console.error('Chat error:', error);
+      const errorMessage = { sender: "bot", text: "Sorry, I'm having trouble connecting right now. Please try again later." };
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -82,12 +80,14 @@ export default function Chatbot() {
               className="flex-1 border rounded-lg px-3 py-2 outline-none text-sm"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && handleSend()}
+              onKeyDown={(e) => e.key === "Enter" && !loading && handleSend()}
+              disabled={loading}
             />
 
             <button
               onClick={handleSend}
-              className="bg-purple-500 text-white p-2 rounded-lg hover:bg-purple-600"
+              className="bg-purple-500 text-white p-2 rounded-lg hover:bg-purple-600 disabled:opacity-50"
+              disabled={loading}
             >
               <FaPaperPlane />
             </button>
