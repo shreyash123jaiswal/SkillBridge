@@ -86,3 +86,7 @@ async function ping() {
 }
 
 module.exports = { analyzeResume, getCareerPivot, chat, ping };
+
+
+
+

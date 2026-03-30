@@ -49,6 +49,11 @@ app.get("/health", (_req, res) => {
   res.json({ status: "ok", service: "skillbridge-backend", timestamp: new Date().toISOString() });
 });
 
+// Optional root endpoint for API base path (helpful for debugging)
+app.get("/api", (_req, res) => {
+  res.json({ status: "ok", api: "skillbridge", endpoints: ["/api/chat", "/api/upload-resume", "/api/jobs", "/api/career-pivot"] });
+});
+
 // ── API Routes ────────────────────────────────────────────────────────────────
 app.use("/api/auth", authRoutes);
 app.use("/api/upload-resume", resumeRoutes);
