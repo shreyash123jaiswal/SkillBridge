@@ -5,6 +5,7 @@ import {
     FaBook,
     FaLayerGroup,
     FaBars,
+    FaMapMarkedAlt,
 } from "react-icons/fa";
 
 export default function Sidebar({ active, setActive }) {
@@ -15,6 +16,7 @@ export default function Sidebar({ active, setActive }) {
         { id: "resume", label: "Resume Analyzer", icon: <FaFileAlt /> },
         { id: "enrolled", label: "Enrolled Courses", icon: <FaBook /> },
         { id: "allCourses", label: "All Courses", icon: <FaLayerGroup /> },
+        { id: "roadmap", label: "Roadmap", icon: <FaMapMarkedAlt /> }, // new roadmap item
     ];
 
     return (
@@ -24,20 +26,19 @@ export default function Sidebar({ active, setActive }) {
         >
             {/* 🔹 TOP SECTION */}
             <div className="flex items-center justify-between p-4 border-b border-white/20">
-  {!collapsed && (
-    <button
-      onClick={() => setActive("hero")} // <-- set to "hero" to render Hero.jsx
-      className="text-xl font-bold tracking-wide hover:text-gray-200 transition"
-    >
-      Dashboard
-    </button>
-  )}
-
-  <FaBars
-    className="cursor-pointer"
-    onClick={() => setCollapsed(!collapsed)}
-  />
-</div>
+                {!collapsed && (
+                    <button
+                        onClick={() => setActive("hero")} // Dashboard
+                        className="text-xl font-bold tracking-wide hover:text-gray-200 transition"
+                    >
+                        Dashboard
+                    </button>
+                )}
+                <FaBars
+                    className="cursor-pointer"
+                    onClick={() => setCollapsed(!collapsed)}
+                />
+            </div>
 
             {/* 🔹 PROFILE CARD */}
             <div className="flex flex-col items-center py-6 border-b border-white/20">
@@ -46,7 +47,6 @@ export default function Sidebar({ active, setActive }) {
                     alt="profile"
                     className="w-40 h-40 rounded-full border-2 border-white shadow-md"
                 />
-
                 {!collapsed && (
                     <>
                         <h3 className="mt-2 font-semibold">Shreyash</h3>
@@ -68,13 +68,12 @@ export default function Sidebar({ active, setActive }) {
                             }`}
                     >
                         <span className="text-lg">{item.icon}</span>
-
                         {!collapsed && <span className="font-medium">{item.label}</span>}
                     </div>
                 ))}
             </div>
 
-            {/* 🔹 FOOTER (OPTIONAL FUTURE USE) */}
+            {/* 🔹 FOOTER */}
             <div className="p-4 border-t border-white/20 text-sm text-center text-white/70">
                 {!collapsed && "SkillBridge © 2026"}
             </div>
